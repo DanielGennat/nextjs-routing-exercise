@@ -1,13 +1,28 @@
+import Link from 'next/link';
+import { Router, useRouter } from 'next/router';
 import styled from 'styled-components';
+import NavLink from './NavLink';
 
 export default function Header() {
+
+  const router = useRouter();
+  const path = router.pathname;
+
   return (
     <AppHeader>
       <Nav>
-        <a>Home</a>
-        <a>Product</a>
-        <a>Team</a>
-        <a>Account</a>
+      <Link href="/">
+        <NavLink active={path === "/"}>Home</NavLink>
+      </Link>
+      <Link href="/product">
+        <NavLink active={path === "/product"}>Product</NavLink>
+      </Link>
+      <Link href="/team">
+        <NavLink active={path === "/team"}>Team</NavLink>
+      </Link>
+      <Link href="/account">
+        <NavLink active={path === "/account"}>Account</NavLink>
+      </Link>
       </Nav>
     </AppHeader>
   );
